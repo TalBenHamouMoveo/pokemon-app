@@ -1,11 +1,19 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { PokemonListComponent } from './pokemon-list/pokemon-list.component';
-import { PokemonDetailComponent } from './pokemon-list/pokemon-detail/pokemon-detail.component';
-import { PokemonListItemComponent } from './pokemon-list/pokemon-list-item/pokemon-list-item.component';
-import { HeaderComponent } from './header/header.component';
+import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonDetailComponent } from './components/pokemon-detail/pokemon-detail.component';
+import { PokemonListItemComponent } from './components/pokemon-list/pokemon-list-item/pokemon-list-item.component';
+import { HeaderComponent } from './components/header/header.component';
+import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './pages/home/home.component';
+
+const appRoutes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'details/:name', component: PokemonDetailComponent }
+];
 
 @NgModule({
   declarations: [
@@ -13,10 +21,14 @@ import { HeaderComponent } from './header/header.component';
     PokemonListComponent,
     PokemonDetailComponent,
     PokemonListItemComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     provideClientHydration()

@@ -1,0 +1,37 @@
+.navbar {
+  background-color: #cbc758; // Navbar background color
+  color: #fff; // Text color
+
+  .container {
+    display: flex;
+    align-items: center; // Align items vertically in the center
+    justify-content: left; // Space between elements
+    padding: 10px; // Optional padding
+  }
+
+  .title {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .list-item {
+      display: inline-block;
+      margin-left: 20px; // Adjust spacing between items
+      font-size: 22px;
+
+      a {
+        color: #fff;
+        text-decoration: none;
+
+        &:hover {
+          color: #ffcc00; // Change color on hover
+        }
+      }
+    }
+  }
+}

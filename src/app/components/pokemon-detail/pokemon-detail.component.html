@@ -1,0 +1,12 @@
+<div class="container">
+    <img src="{{pokemon.image}}" alt="">
+    <label for="name">Name : </label>
+    <div class="containerName">
+        {{pokemon.name}}
+    </div>
+    <label for="types">Types : </label>
+    <div class="containerType">
+        {{ pokemon.type }}
+    </div>
+    <button class="button" (click)="onClick()">Back</button>
+</div>

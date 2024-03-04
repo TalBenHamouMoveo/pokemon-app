@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Pokemon } from '../../shared/pokemon';
 
 @Component({
   selector: 'app-pokemon-list',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './pokemon-list.component.scss'
 })
 export class PokemonListComponent {
+  @Input() pokemons_server: Pokemon[];
 
 }
