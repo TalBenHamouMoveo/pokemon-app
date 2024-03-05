@@ -1,0 +1,37 @@
+.navbar {
+  background-color: var(--header-background-color);
+  color: var(--color); 
+
+  .container {
+    display: flex;
+    align-items: center; 
+    justify-content: left; 
+    padding: 10px; 
+  }
+
+  .title {
+    font-size: var(--font-size-title);
+    font-weight: bold;
+  }
+
+  .list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    .list-item {
+      display: inline-block;
+      margin-left: 20px; 
+      font-size: 22px;
+
+      a {
+        color: var(--color);
+        text-decoration: none;
+
+        &:hover {
+          color: var(--header-hover);
+        }
+      }
+    }
+  }
+}
