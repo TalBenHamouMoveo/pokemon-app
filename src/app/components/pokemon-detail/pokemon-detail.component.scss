@@ -4,11 +4,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: rgb(204, 59, 59);
-    border: 1px solid #ccc;
+    background-color: var(--background-color-details);
+    border: 1px solid var(--border-card-color);
     border-radius: 8px;
     padding: 80px;
     margin: 30px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
   
     img {
       width: 300px;
@@ -20,7 +22,7 @@
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 5px;
-      color: rgb(17, 38, 232);
+      color: var(--color);;
     }
   
     .containerName,
@@ -37,17 +39,16 @@
     font-weight: bold;
     text-decoration: none;
     text-align: center;
-    border: 2px solid #333;
+    border: 2px solid var(--border-button);
     border-radius: 5px;
-    color: #333;
-    background-color: #fff;
+    color: var(--color-button);
+    background-color: var(--color);
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
   
     &:hover {
-      background-color: #333;
-      color: #fff;
-      border-color: #333;
+      background-color: var(--border-button);
+      border-color: var(--border-button);
     }
   
     &:focus {

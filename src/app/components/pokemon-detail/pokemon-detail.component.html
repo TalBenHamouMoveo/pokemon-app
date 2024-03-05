@@ -1,12 +1,24 @@
-<div class="container">
-    <img src="{{pokemon.image}}" alt="">
-    <label for="name">Name : </label>
-    <div class="containerName">
-        {{pokemon.name}}
-    </div>
-    <label for="types">Types : </label>
-    <div class="containerType">
-        {{ pokemon.type }}
-    </div>
-    <button class="button" (click)="onClick()">Back</button>
+<div *ngIf="pokemon" class="container">
+        <img src="{{pokemon.image}}" alt="">
+        <label for="name">Name : </label>
+        <div class="containerName">
+            {{pokemon.name}}
+        </div>
+        <label for="types">Types : </label>
+        <div class="containerType">
+            {{ pokemon.types }}
+        </div>
+        <label for="types">Abilities : </label>
+        <div class="containerType">
+            {{ pokemon.abilities }}
+        </div>
+        <label for="types">Height : </label>
+        <div class="containerType">
+            {{ pokemon.height }}
+        </div>
+        <label for="types">Weight : </label>
+        <div class="containerType">
+            {{ pokemon.weight }}
+        </div>
+        <button class="button" (click)="onClick()">Back</button>
 </div>

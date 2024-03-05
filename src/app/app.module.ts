@@ -9,11 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
-
-const appRoutes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'details/:name', component: PokemonDetailComponent }
-];
+import { appRoutes } from './components/constants/routing.module';
 
 @NgModule({
   declarations: [

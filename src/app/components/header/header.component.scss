@@ -1,16 +1,16 @@
 .navbar {
-  background-color: #cbc758; // Navbar background color
-  color: #fff; // Text color
+  background-color: var(--header-background-color);
+  color: var(--color); 
 
   .container {
     display: flex;
-    align-items: center; // Align items vertically in the center
-    justify-content: left; // Space between elements
-    padding: 10px; // Optional padding
+    align-items: center; 
+    justify-content: left; 
+    padding: 10px; 
   }
 
   .title {
-    font-size: 30px;
+    font-size: var(--font-size-title);
     font-weight: bold;
   }
 
@@ -21,15 +21,15 @@
 
     .list-item {
       display: inline-block;
-      margin-left: 20px; // Adjust spacing between items
+      margin-left: 20px; 
       font-size: 22px;
 
       a {
-        color: #fff;
+        color: var(--color);
         text-decoration: none;
 
         &:hover {
-          color: #ffcc00; // Change color on hover
+          color: var(--header-hover);
         }
       }
     }

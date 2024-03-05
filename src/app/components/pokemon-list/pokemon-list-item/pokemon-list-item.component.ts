@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Pokemon } from '../../../shared/pokemon';
-import { PokemonService } from '../../../shared/pokemon.service';
+import { Component, Input } from '@angular/core';
+import { Pokemon } from '../../constants/pokemon';
+import { PokemonService } from '../../../service/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
   templateUrl: './pokemon-list-item.component.html',
   styleUrl: './pokemon-list-item.component.scss'
 })
-export class PokemonListItemComponent implements OnInit{
+export class PokemonListItemComponent {
   @Input() pokemon: Pokemon;
 
   onClick(pokemon: Pokemon) {
@@ -15,7 +15,4 @@ export class PokemonListItemComponent implements OnInit{
   }
 
   constructor(private pokemonService: PokemonService) { }
-  
-  ngOnInit(): void {
-  }
 }
