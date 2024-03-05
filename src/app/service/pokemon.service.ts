@@ -11,15 +11,10 @@ const URL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10/';
 })
 export class PokemonService {
   pokemons: Pokemon[];
-  clickedPokemon: Pokemon;
-
   constructor(private http: HttpClient) { }
 
-  getClickedPokemon(): Pokemon {
-    return this.clickedPokemon;
-  }
-  setClickedPokemon(pokemon: Pokemon) {
-    this.clickedPokemon = pokemon;
+  getPokemonWithId(id: string) : Pokemon{
+    return this.pokemons.filter(pokemon => pokemon.id === id).at(0);
   }
 
   getPokemonsList(): Pokemon[] {

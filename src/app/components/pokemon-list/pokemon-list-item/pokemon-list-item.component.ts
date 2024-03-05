@@ -10,9 +10,5 @@ import { PokemonService } from '../../../service/pokemon.service';
 export class PokemonListItemComponent {
   @Input() pokemon: Pokemon;
 
-  onClick(pokemon: Pokemon) {
-    this.pokemonService.setClickedPokemon(pokemon);
-  }
-
   constructor(private pokemonService: PokemonService) { }
 }
