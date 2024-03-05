@@ -1,7 +1,8 @@
+@import '../../../../styles.scss';
+
 .container {
     flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    @include centerTheItems;
 
 
     .card-link {
@@ -20,8 +21,7 @@
             width: 280px;
             height: 100px;
             display: flex;
-            justify-content:center;
-            align-items:center;
+            @include centerTheItems;
 
             &:hover {
                 transform: translateY(-5px);

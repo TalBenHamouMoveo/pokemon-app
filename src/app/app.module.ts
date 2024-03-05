@@ -9,7 +9,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
-import { appRoutes } from './components/constants/routing.module';
+import { appRoutes } from './routing.module';
 
 @NgModule({
   declarations: [

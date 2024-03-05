@@ -1,12 +1,18 @@
 :root {
+    //fonts
     --font-family: Times, serif;
+    --font-size-title: 30px;
+
+    //colors
     --color: #fff;
     --color-button: black;
-    --font-size-title: 30px;
-    --border-card-color: #ccc;
+
     --background-color-card: #ff1f1f;
+    --background-color-details: rgb(204, 59, 59);
+
     --header-background-color: #cbc758;
     --header-hover: #ffcc00;
-    --background-color-details: rgb(204, 59, 59);
+
     --border-button: #333;
+    --border-card-color: #ccc;
 }

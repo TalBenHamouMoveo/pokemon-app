@@ -1,8 +1,9 @@
+@import '../../../styles.scss';
+
 .container {
+    @include centerTheItems;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     background-color: var(--background-color-details);
     border: 1px solid var(--border-card-color);

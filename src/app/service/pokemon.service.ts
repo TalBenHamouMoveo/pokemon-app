@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Pokemon } from '../components/constants/pokemon';
+import { Pokemon } from '../constants/pokemon';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map } from 'rxjs';
 
@@ -22,14 +22,13 @@ export class PokemonService {
     this.clickedPokemon = pokemon;
   }
 
-  fetchPokemons(): Observable<Pokemon[]> {
-    return this.http.get<Pokemon[]>(URL);
+  getPokemonsList(): Pokemon[] {
+    return this.pokemons;
   }
 
   getPokemonsFromUrl(): Pokemon[] {
-    this.fetchPokemons().forEach((objectFromUrl: any) => {
-      this.extractPokemonData(objectFromUrl.results).forEach((result) => {
-        let pokemons_obs = result;
+    this.http.get<Pokemon[]>(URL).forEach((objectFromUrl: { [key: string]: any; } ) => {
+      this.extractPokemonData(objectFromUrl.results).forEach((result : Pokemon[]) => {
         this.pokemons = result;
       });
 
@@ -38,13 +37,13 @@ export class PokemonService {
   }
 
   extractPokemonData(results: Pokemon[]): Observable<Pokemon[]> {
-    const detailsObservables: Observable<{ types: string[], abilities: string[], height: number, weight: number }>[] = results.map(result => {
+    const detailsObservables: Observable<{ types: string[], abilities: string[], height: number, weight: number }>[] = results.map((result: { name: string, url: string; }) => {
       return this.getPokemonDetails(result.url);
     });
   
     return forkJoin(detailsObservables).pipe(
       map(detailsArray => {
-        return results.map((result, index) => ({
+        return results.map((result : Pokemon, index : number) => ({
           id: result.url.split('/')[6],
           name: result.name,
           url: result.url,
@@ -58,12 +57,12 @@ export class PokemonService {
     );
   }
 
-  getPokemonDetails(url: string): Observable<{types: string[], abilities: string[], height: number, weight: number }> {
+  getPokemonDetails(url: string): Observable<{ types: string[], abilities: string[], height: number, weight: number }> {
     return this.http.get<Pokemon[]>(url).pipe(
-      map((response: any) => {
+      map((response: { [key: string]: any; }) => {
         const pokemonDetails = {
-          types: response.types.map((type: {slot : number, type: { name: string, url: string}}) => type.type.name),
-          abilities: response.abilities.map((ability: {ability : {name: string, url: string}, is_hidden: boolean, slot: number}) => ability.ability.name),
+          types: response.types.map((type: { slot: number, type: { name: string, url: string; }}) => type.type.name),
+          abilities: response.abilities.map((ability: { ability: { name: string, url: string }, is_hidden: boolean, slot: number; }) => ability.ability.name),
           height: response.height,
           weight: response.weight
         };
