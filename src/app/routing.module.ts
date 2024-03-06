@@ -9,5 +9,6 @@ export const appRoutes: Routes = [
     { path: 'login', component: LoginPageComponent },
     { path: 'home', component: HomeComponent },
     { path: 'details/:id', component: PokemonDetailComponent },
-    { path: 'history', component: HistoryComponent }
+    { path: 'history', component: HistoryComponent },
+    { path: '**', redirectTo: '/login', pathMatch: "full" }
   ];

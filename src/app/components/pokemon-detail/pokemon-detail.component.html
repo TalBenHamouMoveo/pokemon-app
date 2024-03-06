@@ -1,24 +1,42 @@
 <div *ngIf="pokemon" class="container">
         <img src="{{pokemon.image}}" alt="">
+    <div class="holder">
         <label for="name">Name : </label>
         <div class="containerName">
             {{pokemon.name}}
         </div>
+    </div>
+    <div class="holder">
         <label for="types">Types : </label>
         <div class="containerType">
-            {{ pokemon.types }}
+            <ul>
+                <li class="listItem" *ngFor="let type of pokemon.types">
+                    {{ type }}
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="holder">
         <label for="types">Abilities : </label>
         <div class="containerType">
-            {{ pokemon.abilities }}
+            <ul>
+                <li class="listItem" *ngFor="let ability of pokemon.abilities">
+                    {{ ability }}
+                </li>
+            </ul>
         </div>
+    </div>
+    <div class="holder">
         <label for="types">Height : </label>
         <div class="containerType">
             {{ pokemon.height }}
         </div>
+    </div>
+    <div class="holder">
         <label for="types">Weight : </label>
         <div class="containerType">
             {{ pokemon.weight }}
         </div>
+    </div>
         <button class="button" (click)="onClick()">Back</button>
 </div>

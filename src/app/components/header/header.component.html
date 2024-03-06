@@ -7,5 +7,8 @@
           <li class="list-item"><a routerLink="/history">History</a></li>
         </ul>
     </div>
+    <div class="logout">
+      <button *ngIf="logInStatus" class="button" (click)="logOut()">LogOut</button>
+    </div>
   </div>
 </nav>

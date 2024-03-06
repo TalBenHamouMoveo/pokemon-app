@@ -6,31 +6,55 @@
   .container {
     display: flex;
     align-items: center; 
-    justify-content: left; 
+    justify-content: space-between; 
     padding: 10px; 
-  }
 
-  .title {
-    font-size: var(--font-size-title);
-    font-weight: bold;
-  }
-
-  .list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-
-    .list-item {
+    .button {
       display: inline-block;
-      margin-left: 20px; 
-      font-size: 22px;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-decoration: none;
+      text-align: center;
+      border: 1px solid var(--border-button);
+      border-radius: 5px;
+      color: var(--color-button);
+      background-color: var(--logout);
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    
+      &:hover {
+        background-color: var(--border-button);
+        border-color: var(--border-button);
+      }
+    
+      &:focus {
+        outline: none;
+      }
+    }
 
-      a {
-        color: var(--color);
-        text-decoration: none;
+    .title {
+      font-size: var(--font-size-title);
+      font-weight: bold;
+    }
 
-        &:hover {
-          color: var(--header-hover);
+    .list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      .list-item {
+        display: inline-block;
+        margin-left: 20px; 
+        font-size: 22px;
+
+        a {
+          color: var(--color);
+          text-decoration: none;
+
+          &:hover {
+            color: var(--header-hover);
+          }
         }
       }
     }

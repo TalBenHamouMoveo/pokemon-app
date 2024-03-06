@@ -4,26 +4,29 @@
     @include centerTheItems;
     display: flex;
     flex-direction: column;
-    text-align: center;
     background-color: var(--background-color-details);
     border: 1px solid var(--border-card-color);
     border-radius: 8px;
     padding: 80px;
-    margin: 30px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 10px;
+    font-family: var(--font-family);
     
+    .holder{
+      display: flex;
+      align-items: baseline;
+    }
   
     img {
-      width: 300px;
-      height: 300px;
-      margin-bottom: 10px;
+      width: 200px;
+      height: 200px;
     }
   
     label {
       font-size: 24px;
       font-weight: bold;
       margin-bottom: 5px;
-      color: var(--color);;
+      color: var(--color);
+      margin-right: 10px;
     }
   
     .containerName,
@@ -31,6 +34,13 @@
       font-size: 20px;
       font-weight: bold;
       margin-bottom: 10px;
+      text-transform: uppercase;
+      .listItem{
+        padding: 2px;
+        list-style-type: none;
+        pointer-events: none;
+        text-align: center;
+      }
     }
   }
   .button {

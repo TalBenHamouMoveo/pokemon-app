@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PokemonService } from '../../service/pokemon.service';
 import { Pokemon } from '../../constants/pokemon';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -11,49 +12,54 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit{
   pokemons: Pokemon[];
   filteredPokemons: Pokemon[] = [];
-  searchTerm: string = '';
+  searchInput: string = '';
   recentSearches: string[];
-
 
   constructor(private pokemonService: PokemonService, private router: Router) { 
   }
   
-  getPokemons() {
-    this.pokemons = this.pokemonService.getPokemonsFromUrl();
-  }
-
   ngOnInit(): void {
     if (localStorage.getItem('loginMember')) {
-      this.getPokemons();
-      this.recentSearches = JSON.parse(localStorage.getItem('recentSearch'));
-      console.log('this.pokemons :>> ', this.pokemons);
+      this.getObsPokemons().subscribe((pokemons: Pokemon[]) => {
+        this.pokemons = pokemons;
+        this.filteredPokemons = pokemons;
+        this.recentSearches = JSON.parse(localStorage.getItem('recentSearch'));
+        this.pokemonService.setPokemonList(this.pokemons);
+      });
     }
+    else {
+      this.router.navigate(['']);
+    }
+  }
+  getObsPokemons() : Observable<Pokemon[]> {
+    return this.pokemonService.getObservablePokemonsFromUrl();
   }
 
   filterPokemons() {
     this.filteredPokemons = this.pokemons.filter(pokemon =>
-      pokemon.name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
-
-    this.addRecentSearch(this.searchTerm);
+    if (this.searchInput != '')
+      this.addRecentSearch(this.searchInput);
   }
 
   addRecentSearch(searchTerm: string) {
-    console.log('before insert this.recentSearches :>> ', this.recentSearches);
     this.recentSearches = [searchTerm].concat(this.recentSearches);
-
     if (this.recentSearches.length > 5) {
       this.recentSearches.pop();
     }
-
-    console.log('after insert this.recentSearches :>> ', this.recentSearches);
-
     localStorage.setItem('recentSearch', JSON.stringify(this.recentSearches));
   }
 
-  logOut() {
-    localStorage.removeItem('loginMember');
-    this.router.navigate(['']);
+  inputTrigger() {
+    if (this.searchInput === '') {
+      this.filteredPokemons = this.pokemons;
+    }
   }
 
+
+  search() {
+    this.filterPokemons();
+    
+  }
 }
