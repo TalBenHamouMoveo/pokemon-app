@@ -1,0 +1,12 @@
+<div class="listHolder">
+    <div *ngIf="historyMessage === undefined">
+        <ul>
+            <li *ngFor="let history of recentSearch; let i = index">
+                <label for="history">{{ history }}</label>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="historyMessage != undefined">
+        <label for="emptyHistory">{{historyMessage}}</label>
+    </div>
+</div>

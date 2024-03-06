@@ -1,0 +1,41 @@
+@import '../../../styles.scss';
+.holder{
+    display: flex;
+
+    .inputHolder{
+        border:none;
+        margin-top: 15px;
+        padding-left: 250px;
+        
+        .input{
+            border: 3px solid var(--border-card-color);
+            border-radius: 4px;
+            font-size: 18px;
+            padding: 8px;
+            width: 300px;
+        }
+    }
+}
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border: 1px solid var(--border-button);
+    border-radius: 5px;
+    color: var(--color-button);
+    background-color: var(--color);
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  
+    &:hover {
+      background-color: var(--border-button);
+      border-color: var(--border-button);
+    }
+  
+    &:focus {
+      outline: none;
+    }
+  }

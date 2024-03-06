@@ -1,0 +1,33 @@
+@import '../../../styles.scss';
+label {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-family: var(--font-family);
+    color: var(--color-card);
+}
+li {
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #f2f2f2;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    list-style-type: none;
+    pointer-events: none;
+    width: 100px;
+    text-align: center;
+
+    &:hover{
+        background-color: #e0e0e0;
+        cursor: pointer;
+    }
+}
+
+.listHolder{
+    display: flex;
+    @include centerTheItems;
+    gap: 15px;
+    padding: 20px;
+}
+

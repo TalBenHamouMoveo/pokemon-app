@@ -1,3 +1,11 @@
 <div>
-    <app-pokemon-list [pokemonList]="pokemons"></app-pokemon-list>
+    <div class="holder">
+        <button class="button" (click)="logOut()">LogOut</button>
+        <div class="inputHolder">
+            <input class="input" type="text" [(ngModel)]="searchTerm" placeholder="Search Pokemon" (input)="filterPokemons()">
+        </div>
+    </div>
+
+    <app-pokemon-list *ngIf="searchTerm === ''" [pokemonList]="pokemons"></app-pokemon-list>
+    <app-pokemon-list *ngIf="searchTerm != ''" [pokemonList]="filteredPokemons"></app-pokemon-list>
 </div>
