@@ -9,12 +9,12 @@ import { Component, AfterViewInit, ViewChild, ElementRef } from '@angular/core';
 export class MyMapComponent implements AfterViewInit{
 
   map: google.maps.Map = undefined;
-  lat = 40.730610;
-  lng = -73.935242;
+  lat = 32.06244076;
+  lng = 34.7707653;
   coordinates = new google.maps.LatLng(this.lat, this.lng);
   mapOptions: google.maps.MapOptions = {
     center: this.coordinates,
-    zoom: 8,
+    zoom: 15,
   };
   @ViewChild('mapContainer', {static: false}) gmap: ElementRef;
   
