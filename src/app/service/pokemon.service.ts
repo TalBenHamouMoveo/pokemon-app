@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
 import { Pokemon } from '../constants/pokemon';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map } from 'rxjs';
+import { Observable, Subject, forkJoin, map, switchMap } from 'rxjs';
 
 
-const URL = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=10/';
-  
+
 @Injectable({
   providedIn: 'root'
 })
 export class PokemonService {
+  url: string = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100/';
   pokemons: Pokemon[];
+  logInStatus: boolean = false;
+  private logInSub = new Subject<boolean>();
+
   constructor(private http: HttpClient) { }
+
+  getLogInSub(): Subject<boolean> {
+    return this.logInSub;
+  }
+
+  setLogInStatus(value: boolean) {
+    this.logInStatus = value;
+    this.logInSub.next(value);
+  }
+
+  getLogInStatus() : boolean{
+    return this.logInStatus;
+  }
 
   getPokemonWithId(id: string) : Pokemon{
     return this.pokemons.filter(pokemon => pokemon.id === id).at(0);
@@ -20,22 +36,25 @@ export class PokemonService {
   getPokemonsList(): Pokemon[] {
     return this.pokemons;
   }
+  setPokemonList(pokemons: Pokemon[]): void {
+    this.pokemons = pokemons;
+  }
 
-  getPokemonsFromUrl(): Pokemon[] {
-    this.http.get<Pokemon[]>(URL).forEach((objectFromUrl: { [key: string]: any; } ) => {
-      this.extractPokemonData(objectFromUrl.results).forEach((result : Pokemon[]) => {
-        this.pokemons = result;
-      });
-
-    })
-    return this.pokemons;
+  getObservablePokemonsFromUrl(): Observable<Pokemon[]> {
+    return this.http.get<{ results: Pokemon[] }>(this.url).pipe(
+      map((objectFromUrl: { results: Pokemon[] }) => {
+          const results = objectFromUrl.results;
+          return this.extractPokemonData(results);
+      }),
+      switchMap(pokemonObservable => pokemonObservable)
+    );
   }
 
   extractPokemonData(results: Pokemon[]): Observable<Pokemon[]> {
     const detailsObservables: Observable<{ types: string[], abilities: string[], height: number, weight: number }>[] = results.map((result: { name: string, url: string; }) => {
       return this.getPokemonDetails(result.url);
     });
-  
+    
     return forkJoin(detailsObservables).pipe(
       map(detailsArray => {
         return results.map((result : Pokemon, index : number) => ({
@@ -50,6 +69,7 @@ export class PokemonService {
         }));
       })
     );
+    
   }
 
   getPokemonDetails(url: string): Observable<{ types: string[], abilities: string[], height: number, weight: number }> {

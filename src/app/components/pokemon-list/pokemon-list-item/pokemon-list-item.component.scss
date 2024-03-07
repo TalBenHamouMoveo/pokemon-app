@@ -3,40 +3,40 @@
 .container {
     flex-wrap: wrap;
     @include centerTheItems;
+    margin-top: 20px;
 
 
     .card-link {
         text-decoration: none;
         color: inherit;
-        width: calc(33.33% - 40px);
-        margin: 30px;
+        width: calc(33.33% - 40px);        
 
         .card {
             background-color: var(--background-color-card);
             border: 1px solid var(--border-card-color);
-            border-radius: 8px;
+            border-radius: 20px;
             padding: 30px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            width: 280px;
+            width: 150px;
             height: 100px;
             display: flex;
+            flex-direction: column;
             @include centerTheItems;
 
             &:hover {
-                transform: translateY(-5px);
+                transform: translateY(-20px);
                 box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
             }
 
             font-family: var(--font-family);
             font-size: 20px;
-            font-weight: 400;
             color: var(--color);
             text-transform: uppercase;
 
             .pokemon-image{
-                height: 150px;
-                width: 150px;
+                height: 120px;
+                width: 130px;
             }
         }
     }

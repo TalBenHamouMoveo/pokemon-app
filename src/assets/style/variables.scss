@@ -1,14 +1,21 @@
 :root {
     //fonts
-    --font-family: Times, serif;
+    --font-family: Arial, Helvetica, sans-serif;;
     --font-size-title: 30px;
 
     //colors
-    --color: #fff;
+    --white: #fff;
     --color-button: black;
+    --blue: #007bff;
+    --black: black;
+    --red: red;
+    --logout: rgb(209, 7, 7);
 
     --background-color-card: #ff1f1f;
     --background-color-details: rgb(204, 59, 59);
+    --background-color-login-btn: #007bff;
+    --background-color-login-btn-hover: #8d8a41;
+    --background-color-login-comp: #f9f9f9;
 
     --header-background-color: #cbc758;
     --header-hover: #ffcc00;

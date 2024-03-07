@@ -1,10 +1,14 @@
 <nav class="navbar">
   <div class="container">
     <div class="title">{{ title }}</div>
-    <div class="links">
+    <div *ngIf="logInStatus" class="links">
         <ul class="list">
           <li class="list-item"><a routerLink="/home">Home</a></li>
+          <li class="list-item"><a routerLink="/history">History</a></li>
         </ul>
+    </div>
+    <div *ngIf="logInStatus" class="logout">
+      <button class="button" (click)="logOut()">LogOut</button>
     </div>
   </div>
 </nav>

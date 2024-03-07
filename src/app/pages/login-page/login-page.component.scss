@@ -1,0 +1,64 @@
+@import '../../../styles.scss';
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid var(--border-card-color);
+    border-radius: 5px;
+    background-color: var(--background-color-login-comp);
+    margin-top: 20px;
+    font-family: var(--font-family);
+
+    .loginLabel {
+        display: block;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 24px;
+        font-weight: bold;
+        color: var(--black);
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+        display: inline-block;
+
+        label {
+            display: flex;
+            margin-bottom: 5px;
+            color: var(--border-button);
+        }
+
+        input[type="email"] {
+            width: 380px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid var(--border-card-color);
+            border-radius: 5px;
+        }
+    }
+
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: var(--header-background-color);
+        color: var(--black);
+        
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--background-color-login-btn-hover);
+        }
+    }
+    label {
+        display: flex;
+        margin-top: 5px;
+        @include centerTheItems;
+        color: var(--red);
+        font-weight: bold;
+    }
+}
+

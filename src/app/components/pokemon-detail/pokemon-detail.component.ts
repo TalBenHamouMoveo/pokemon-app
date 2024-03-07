@@ -16,14 +16,17 @@ export class PokemonDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    if (this.pokemonService.getPokemonsList() === undefined) 
-      this.pokemonService.getPokemonsFromUrl();
-
+    if (this.pokemonService.getPokemonsList() === undefined)
+    {
+      this.pokemonService.getObservablePokemonsFromUrl().subscribe((pokemons) => {
+        this.pokemonService.setPokemonList(pokemons);
+      });  
+    }
     this.pokemon = this.pokemonService.getPokemonWithId(this.id);
   }
 
   onClick() {
-    this.router.navigate(['']);
+    this.router.navigate(['/home']);
   }
 
 }

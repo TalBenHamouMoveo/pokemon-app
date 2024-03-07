@@ -10,6 +10,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './pages/home/home.component';
 import { appRoutes } from './routing.module';
+import { HistoryComponent } from './pages/history/history.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { appRoutes } from './routing.module';
     PokemonDetailComponent,
     PokemonListItemComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    HistoryComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,

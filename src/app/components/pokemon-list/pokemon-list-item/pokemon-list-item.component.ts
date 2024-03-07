@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { Pokemon } from '../../../constants/pokemon';
-import { PokemonService } from '../../../service/pokemon.service';
 
 @Component({
   selector: 'app-pokemon-list-item',
@@ -9,6 +8,4 @@ import { PokemonService } from '../../../service/pokemon.service';
 })
 export class PokemonListItemComponent {
   @Input() pokemon: Pokemon;
-
-  constructor(private pokemonService: PokemonService) { }
 }
