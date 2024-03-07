@@ -11,11 +11,14 @@ export class HistoryComponent implements OnInit{
   historyTitle: string = 'Search History';
 
   ngOnInit(): void {
-    this.recentSearch = JSON.parse(localStorage.getItem('recentSearch'));
-    // this.getHistoryMessage();
-    if (!this.recentSearch || this.recentSearch.length === 0) {
-      this.historyMessage = "History Log Is Empty !";
+    if (this.LocalStorageIsDefined()) {
+      this.recentSearch = JSON.parse(localStorage.getItem('recentSearch'));
+      this.getHistoryMessage();
     }
+  }
+
+  LocalStorageIsDefined() {
+    return typeof localStorage !== 'undefined';
   }
 
   getHistoryMessage() {

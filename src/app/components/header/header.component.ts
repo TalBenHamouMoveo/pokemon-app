@@ -11,11 +11,11 @@ export class HeaderComponent implements OnInit{
   title = 'Pokemon';
   logInStatus: boolean = false;
   private desiredEmail: string = "demo@skills.co.il";
-
+  
   constructor(private router: Router, private pokemonService: PokemonService) { }
 
   ngOnInit(): void {
-    if (localStorage.getItem('loginMember') != undefined && localStorage.getItem('loginMember') === this.desiredEmail)
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('loginMember') != undefined && localStorage.getItem('loginMember') === this.desiredEmail)
       this.logInStatus = true;
 
     this.pokemonService.getLogInSub().subscribe((value: boolean) => {

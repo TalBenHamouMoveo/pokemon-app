@@ -13,17 +13,18 @@ export class HomeComponent implements OnInit{
   pokemons: Pokemon[];
   filteredPokemons: Pokemon[] = [];
   searchInput: string = '';
-  recentSearches: string[];
+  recentSearches: string[] = [];
 
   constructor(private pokemonService: PokemonService, private router: Router) { 
   }
   
   ngOnInit(): void {
-    if (localStorage.getItem('loginMember')) {
+    if (typeof localStorage !== 'undefined' && localStorage.getItem('loginMember')) {
       this.getObsPokemons().subscribe((pokemons: Pokemon[]) => {
         this.pokemons = pokemons;
         this.filteredPokemons = pokemons;
-        this.recentSearches = JSON.parse(localStorage.getItem('recentSearch'));
+        if (localStorage.getItem('recentSearch') != undefined)
+          this.recentSearches = JSON.parse(localStorage.getItem('recentSearch'));
         this.pokemonService.setPokemonList(this.pokemons);
       });
     }
@@ -43,8 +44,9 @@ export class HomeComponent implements OnInit{
       this.addRecentSearch(this.searchInput);
   }
 
-  addRecentSearch(searchTerm: string) {
-    this.recentSearches = [searchTerm].concat(this.recentSearches);
+  addRecentSearch(searchInput: string) {
+    this.recentSearches = [searchInput].concat(this.recentSearches);
+
     if (this.recentSearches.length > 5) {
       this.recentSearches.pop();
     }

@@ -1,5 +1,5 @@
 <div >
-    <div class="listTitleHolder" *ngIf="historyMessage === undefined">
+    <div class="listTitleHolder" *ngIf="historyMessage === undefined; else elseBlock">
         <label for="title">{{ historyTitle }}</label>
         <ul class="listHolder">
             <li *ngFor="let history of recentSearch; let i = index">
@@ -7,7 +7,9 @@
             </li>
         </ul>
     </div>
-    <div class="historyMessage" *ngIf="historyMessage != undefined">
-        <label for="emptyHistory">{{ historyMessage }}</label>
-    </div>
+    <ng-template #elseBlock>
+        <div class="historyMessage">
+            <label for="emptyHistory">{{ historyMessage }}</label>
+        </div>
+    </ng-template>
 </div>
