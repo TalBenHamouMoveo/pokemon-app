@@ -17,6 +17,9 @@
       "ES2022",
       "dom"
     ],
+    "types": [
+      "googlemaps"
+    ],
     "typeRoots": [
       "node_modules/@types",
     ]
