@@ -1,4 +1,4 @@
-export class Coordinates {
+export interface MapCoordinates {
     lat: number;
     lng: number;
 }
