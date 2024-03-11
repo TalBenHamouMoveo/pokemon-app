@@ -6,7 +6,7 @@
     "types": [
       "node",
       "jasmine",
-      "googlemaps"
+      "google.maps"
     ]
   },
   "include": [

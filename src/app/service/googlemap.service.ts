@@ -1,14 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Loader } from '@googlemaps/js-api-loader';
 import { MapCoordinates } from '../constants/map.coordinates';
-import { env } from '../../environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GooglemapService {
-  
-  private loader: Loader;
+
   private map: google.maps.Map;
   private marker: google.maps.Marker;
   private office: MapCoordinates = {
@@ -25,18 +22,9 @@ export class GooglemapService {
   private place: google.maps.places.PlaceResult;
   private directionsDisplayed: boolean = false;
 
-  constructor() {
-    this.loader = new Loader({
-      apiKey: env.GMaps_API_Key,
-      libraries: ['places', 'maps']
-    });
-  }
+  constructor() { }
 
-  loadMapAPI(): Promise<typeof google> {
-    return this.loader.load();
-  }
-
-  initializeMap(element: HTMLElement): void {
+  initializeMap(element: HTMLElement): google.maps.Map {
     const coordinatesOffice = new google.maps.LatLng(this.office.lat, this.office.lng);
     const mapOptions: google.maps.MapOptions = {
       center: coordinatesOffice,
@@ -48,10 +36,7 @@ export class GooglemapService {
       map: this.map
     });
     this.directionRenderer.setMap(this.map);
-  }
-
-  getMarker(): google.maps.Marker {
-    return this.marker;
+    return this.map;
   }
 
   initAutocomplete(input: HTMLInputElement): void {
@@ -113,9 +98,14 @@ export class GooglemapService {
     });
   }
 
-  backToOffice() {
+  clearMarker(): void {
+    this.marker.setPosition();
+  }
+
+  backToOffice(): void {
     this.marker.setPosition(this.office);
     this.map.setCenter(this.office);
   }
 }
+
 
