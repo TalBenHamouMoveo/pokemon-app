@@ -1,0 +1,8 @@
+<div class="container">
+        <div *ngIf="!loading" #additional class="btInputContainer">
+            <button class="btn" (click)="backToOffice()">Back To Office</button>
+            <button class="btn" (click)="nevigate()">Direction To Office</button>
+        </div>
+        <input class="autocomplete" id="autocomplete" type="text" placeholder="Enter a location">
+    <div #mapContainer id="map"></div>
+</div>

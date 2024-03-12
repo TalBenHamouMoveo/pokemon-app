@@ -12,6 +12,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { appRoutes } from './routing.module';
 import { HistoryComponent } from './pages/history/history.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { MyMapComponent } from './pages/my-map/my-map.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
     HeaderComponent,
     HomeComponent,
     HistoryComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    MyMapComponent
   ],
   imports: [
     BrowserModule,

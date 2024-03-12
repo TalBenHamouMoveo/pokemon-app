@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { PokemonService } from './service/pokemon.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,5 +6,4 @@ import { PokemonService } from './service/pokemon.service';
   styleUrl: './app.component.scss'
 })
 export class AppComponent{
-  
 }
