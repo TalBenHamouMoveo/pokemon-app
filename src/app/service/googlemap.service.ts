@@ -22,9 +22,7 @@ export class GooglemapService {
   private place: google.maps.places.PlaceResult;
   private directionsDisplayed: boolean = false;
 
-  constructor() { }
-
-  initializeMap(element: HTMLElement): google.maps.Map {
+  initializeMap(element: HTMLElement, elementInput: HTMLInputElement): google.maps.Map {
     const coordinatesOffice = new google.maps.LatLng(this.office.lat, this.office.lng);
     const mapOptions: google.maps.MapOptions = {
       center: coordinatesOffice,
@@ -36,6 +34,7 @@ export class GooglemapService {
       map: this.map
     });
     this.directionRenderer.setMap(this.map);
+    this.initAutocomplete(elementInput);
     return this.map;
   }
 
