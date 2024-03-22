@@ -1,13 +1,20 @@
 .navbar {
   background-color: var(--header-background-color);
-  color: var(--color); 
+  color: var(--color);
   font-family: var(--font-family);
 
   .container {
     display: flex;
-    align-items: center; 
-    justify-content: space-between; 
-    padding: 10px; 
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+
+    .imgWrapper {
+      display: flex;
+      .pokemonImg {
+        width: 150px;
+      }
+    }
 
     .button {
       display: inline-block;
@@ -18,16 +25,16 @@
       text-align: center;
       border: 1px solid var(--border-button);
       border-radius: 5px;
-      color: var(--color-button);
-      background-color: var(--logout);
+      color: var(--background-color-card);
+      background-color: var(--background-color-logout-btn);
       cursor: pointer;
       transition: background-color 0.3s, color 0.3s, border-color 0.3s;
-    
+
       &:hover {
-        background-color: var(--border-button);
+        background-color: var(--background-color-card-hover);
         border-color: var(--border-button);
       }
-    
+
       &:focus {
         outline: none;
       }
@@ -42,12 +49,15 @@
       list-style: none;
       margin: 0;
       padding: 0;
+      .active-link {
+        color: var(--header-hover);
+      }
 
       .list-item {
         display: inline-block;
-        margin-left: 20px; 
+        margin-left: 20px;
         font-size: 22px;
-
+        font-weight: bold;
         a {
           color: var(--color);
           text-decoration: none;

@@ -8,7 +8,6 @@ import { PokemonService } from '../../service/pokemon.service';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent implements OnInit{
-  title = 'Pokemon';
   logInStatus: boolean = false;
   private desiredEmail: string = "demo@skills.co.il";
   

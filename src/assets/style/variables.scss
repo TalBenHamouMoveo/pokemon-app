@@ -1,6 +1,6 @@
 :root {
     //fonts
-    --font-family: Arial, Helvetica, sans-serif;;
+    --font-family: Helvetica Neue;
     --font-size-title: 30px;
 
     //colors
@@ -9,16 +9,18 @@
     --blue: #007bff;
     --black: black;
     --red: red;
-    --logout: rgb(209, 7, 7);
+    --logout: rgb(227, 59, 59);
 
-    --background-color-card: #ff1f1f;
-    --background-color-details: rgb(204, 59, 59);
+    --background-color-card: rgb(255, 221, 87);
+    --background-color-card-hover: rgb(237, 28, 36);
+    --background-color-details: rgb(255, 221, 87);
     --background-color-login-btn: #007bff;
     --background-color-login-btn-hover: #8d8a41;
     --background-color-login-comp: #f9f9f9;
+    --background-color-logout-btn: rgb(33, 56, 110);
 
-    --header-background-color: #cbc758;
-    --header-hover: #ffcc00;
+    --header-background-color: rgb(118, 167, 220);
+    --header-hover: rgb(255, 221, 87);
 
     --border-button: #333;
     --border-card-color: #ccc;

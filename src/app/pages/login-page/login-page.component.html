@@ -1,10 +1,10 @@
 <div class="container">
-    <label class="loginLabel">Login</label>
+    <label class="loginLabel">LOGIN</label>
     <form name="form-group">
         <div class="form-group">
             <input type="email" id="email" [(ngModel)]="email" name="email" placeholder="Enter email" required>
         </div>
-        <button type="submit" (click)="onSubmit()">Login</button>
+        <button type="submit" (click)="onSubmit()">Sign in</button>
     </form>
     <div>
         <label *ngIf="message" for="uncorrect">{{ message }}</label>

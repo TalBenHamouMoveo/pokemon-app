@@ -8,7 +8,7 @@ import { PokemonService } from '../../service/pokemon.service';
   templateUrl: './pokemon-detail.component.html',
   styleUrl: './pokemon-detail.component.scss'
 })
-export class PokemonDetailComponent implements OnInit{
+export class PokemonDetailComponent implements OnInit {
   pokemon: Pokemon;
   id: string;
 
@@ -16,13 +16,15 @@ export class PokemonDetailComponent implements OnInit{
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
-    if (this.pokemonService.getPokemonsList() === undefined)
-    {
+    if (this.pokemonService.getPokemonsList() === undefined) {
       this.pokemonService.getObservablePokemonsFromUrl().subscribe((pokemons) => {
         this.pokemonService.setPokemonList(pokemons);
-      });  
+        this.pokemon = this.pokemonService.getPokemonWithId(this.id);
+      });
     }
-    this.pokemon = this.pokemonService.getPokemonWithId(this.id);
+    else {
+      this.pokemon = this.pokemonService.getPokemonWithId(this.id);
+    }
   }
 
   onClick() {

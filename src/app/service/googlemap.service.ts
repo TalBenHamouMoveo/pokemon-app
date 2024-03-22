@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MapCoordinates } from '../constants/map.coordinates';
+import { mapStyles } from '../constants/map.style';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,7 @@ export class GooglemapService {
     const mapOptions: google.maps.MapOptions = {
       center: coordinatesOffice,
       zoom: 15,
+      styles: mapStyles
     };
     this.map = new google.maps.Map(element, mapOptions);
     this.marker = new google.maps.Marker({
@@ -48,7 +50,7 @@ export class GooglemapService {
 
   acAddListener() {
     this.autocomplete.addListener('place_changed', () => {
-     this.place = this.autocomplete.getPlace();
+      this.place = this.autocomplete.getPlace();
       if (this.placeIsNotSet()) {
         return;
       }
@@ -56,7 +58,7 @@ export class GooglemapService {
       this.marker.setPosition(this.place.geometry.location);
 
       if (this.place.geometry.viewport) {
-        bounds.union(this.place.geometry.viewport); 
+        bounds.union(this.place.geometry.viewport);
       }
       this.map.fitBounds(bounds);
       this.clearDirections();
@@ -73,14 +75,14 @@ export class GooglemapService {
     }
   }
 
-  placeIsNotSet(): boolean{
+  placeIsNotSet(): boolean {
     return !this.place.geometry || !this.place.geometry.location;
   }
 
   setDirections() {
     const coordinatesOffice = new google.maps.LatLng(this.office.lat, this.office.lng);
     const coordinatesHome = new google.maps.LatLng(this.home.lat, this.home.lng);
-    const directionRequest : google.maps.DirectionsRequest = {
+    const directionRequest: google.maps.DirectionsRequest = {
       origin: coordinatesHome,
       destination: coordinatesOffice,
       travelMode: google.maps.TravelMode.DRIVING,
@@ -93,7 +95,7 @@ export class GooglemapService {
       if (status == 'OK') {
         this.directionRenderer.setDirections(result);
         this.directionsDisplayed = true;
-      }      
+      }
     });
   }
 

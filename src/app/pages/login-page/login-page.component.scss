@@ -48,6 +48,8 @@
         border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease;
+        font-weight: bold;
+        font-size: large;
 
         &:hover {
             background-color: var(--background-color-login-btn-hover);

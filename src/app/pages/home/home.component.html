@@ -1,8 +1,15 @@
 <div>
     <div class="holder">
         <div class="inputHolder">
-            <input class="input" type="text" [(ngModel)]="searchInput" placeholder="Search Pokemon" (input)="inputTrigger()">
+            <input class="input" type="text" [(ngModel)]="searchInput" placeholder="Search Pokemon"
+                (input)="inputTrigger()">
             <button class="button" (click)="search()">Search</button>
+        </div>
+        <div class="selectWrapper">
+            <select class="select" [(ngModel)]="selectedType" (change)="filterByType()">
+                <option value="All">All Types</option>
+                <option *ngFor="let type of types" [value]="type" class="options">{{ type }}</option>
+            </select>
         </div>
     </div>
     <app-pokemon-list [pokemonList]="filteredPokemons"></app-pokemon-list>

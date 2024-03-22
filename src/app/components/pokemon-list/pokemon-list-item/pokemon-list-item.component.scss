@@ -27,6 +27,7 @@
             &:hover {
                 transform: translateY(-20px);
                 box-shadow: 10px 10px 10px rgba(0, 0, 0, 1);
+                background-color: var(--background-color-card-hover);
             }
 
             font-family: var(--font-family);

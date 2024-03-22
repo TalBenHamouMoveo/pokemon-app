@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit{
   filteredPokemons: Pokemon[] = [];
   searchInput: string = '';
   recentSearches: string[] = [];
+  types: string[] = [];
+  selectedType: string = 'All';
 
   constructor(private pokemonService: PokemonService, private router: Router) { 
   }
@@ -22,6 +24,8 @@ export class HomeComponent implements OnInit{
     if (typeof localStorage !== 'undefined' && localStorage.getItem('loginMember')) {
       this.getObsPokemons().subscribe((pokemons: Pokemon[]) => {
         this.pokemons = pokemons;
+        console.log(pokemons);
+        this.collectUniqueTypes();
         this.filteredPokemons = pokemons;
         if (localStorage.getItem('recentSearch') != undefined)
           this.recentSearches = JSON.parse(localStorage.getItem('recentSearch'));
@@ -59,6 +63,25 @@ export class HomeComponent implements OnInit{
     }
   }
 
+  collectUniqueTypes(): void {
+    const allTypes: string[] = [];
+    this.pokemons.forEach(pokemon => {
+      pokemon.types.forEach(type => {
+        if (!allTypes.includes(type)) {
+          allTypes.push(type);
+        }
+      });
+    });
+    this.types = allTypes;
+  }
+
+  filterByType(): void {
+    if (this.selectedType === 'All') {
+      this.filteredPokemons = this.pokemons;
+    } else {
+      this.filteredPokemons = this.pokemons.filter(pokemon => pokemon.types.includes(this.selectedType));
+    }
+  }
 
   search() {
     this.filterPokemons();

@@ -2,16 +2,17 @@
 
 .holder{
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    width: 100%;
+    align-items: baseline;
+    justify-content: center;
+    gap: 50px;
 
     .inputHolder{
-      flex: 1;
       border: none;
       display: flex;
+      justify-content: flex-end;
       @include centerTheItems;
       margin-top: 15px;
-      margin-left: 150px;
         
       .input{
           border: 3px solid var(--border-card-color);
@@ -29,6 +30,24 @@
         }
       }
     }
+
+    .selectWrapper{
+      display: flex;
+      @include centerTheItems;
+
+      .select {
+        background-color: var(--header-background-color);
+        border: 1px solid var(--border-button);
+        border-radius: 4px;
+        padding: 10px;
+        width: 120px;
+        font-weight: bold;
+        text-transform: capitalize;
+      }
+
+  }
+    
+    
   .button {
       display: inline-block;
       padding: 10px 20px;

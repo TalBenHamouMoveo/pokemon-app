@@ -1,15 +1,17 @@
 <nav class="navbar">
   <div class="container">
-    <div class="title">{{ title }}</div>
+    <div class="imgWrapper">
+      <img src="../../../assets/International_Pokémon_logo.svg.png" alt="pokemon" class="pokemonImg">
+    </div>
     <div *ngIf="logInStatus" class="links">
-        <ul class="list">
-          <li class="list-item"><a routerLink="/home">Home</a></li>
-          <li class="list-item"><a routerLink="/history">History</a></li>
-          <li class="list-item"><a routerLink="/MyMap">My Map</a></li>
-        </ul>
+      <ul class="list">
+        <li class="list-item" routerLinkActive="active-link"><a routerLink="/home">Home</a></li>
+        <li class="list-item" routerLinkActive="active-link"><a routerLink="/history">History</a></li>
+        <li class="list-item" routerLinkActive="active-link"><a routerLink="/MyMap">My Map</a></li>
+      </ul>
     </div>
     <div *ngIf="logInStatus" class="logout">
-      <button class="button" (click)="logOut()">LogOut</button>
+      <button class="button" (click)="logOut()">Log-out</button>
     </div>
   </div>
 </nav>
