@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit{
     if (typeof localStorage !== 'undefined' && localStorage.getItem('loginMember')) {
       this.getObsPokemons().subscribe((pokemons: Pokemon[]) => {
         this.pokemons = pokemons;
-        console.log(pokemons);
         this.collectUniqueTypes();
         this.filteredPokemons = pokemons;
         if (localStorage.getItem('recentSearch') != undefined)
@@ -41,7 +40,7 @@ export class HomeComponent implements OnInit{
   }
 
   filterPokemons() {
-    this.filteredPokemons = this.pokemons.filter(pokemon =>
+    this.filteredPokemons = this.filteredPokemons.filter(pokemon =>
       pokemon.name.toLowerCase().includes(this.searchInput.toLowerCase())
     );
     if (this.searchInput != '')
@@ -72,7 +71,7 @@ export class HomeComponent implements OnInit{
         }
       });
     });
-    this.types = allTypes;
+    this.types = allTypes.sort((a, b) => a.localeCompare(b));
   }
 
   filterByType(): void {
